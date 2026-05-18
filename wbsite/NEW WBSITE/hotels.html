@@ -1,102 +1,188 @@
+<!-- hotels.html -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotels</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <div class="logo">StayEase</div>
-</header>
+  <!-- Header -->
+  <header>
 
-<section class="hotel-page">
-  <h1 id="cityTitle"></h1>
+    <div class="logo">StayEase</div>
 
-  <div class="hotel-container" id="hotelList"></div>
-</section>
+  </header>
 
-<script>
+  <!-- Hotel Section -->
+  <section class="hotel-page">
 
-const hotelsData = {
+    <h1 id="cityTitle"></h1>
 
-  chennai: [
-    {
-      name: "ITC Grand Chola",
-      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-      rating: "⭐⭐⭐⭐⭐",
-      desc: "Luxury hotel with premium rooms and spa."
-    },
-        
-      desc: "Comfortable stay near Marina Beach."
+    <div class="hotel-container" id="hotelList"></div>
+
+  </section>
+
+  <script>
+
+    const hotelsData = {
+
+      chennai: [
+
+        {
+          name: "ITC Grand Chola",
+          image:
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
+
+          rating: "⭐⭐⭐⭐⭐",
+
+          desc:
+            "Luxury hotel with spa and premium rooms."
+        },
+
+        {
+          name: "Marina Residency",
+
+          image:
+            "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
+
+          rating: "⭐⭐⭐⭐",
+
+          desc:
+            "Comfortable stay near Marina Beach."
+        }
+
+      ],
+
+      mumbai: [
+
+        {
+          name: "Sea View Palace",
+
+          image:
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+
+          rating: "⭐⭐⭐⭐⭐",
+
+          desc:
+            "Luxury sea-facing hotel in Mumbai."
+        },
+
+        {
+          name: "City Crown Hotel",
+
+          image:
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+
+          rating: "⭐⭐⭐⭐",
+
+          desc:
+            "Affordable stay in city center."
+        }
+
+      ],
+
+      delhi: [
+
+        {
+          name: "Royal Orchid",
+
+          image:
+            "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+
+          rating: "⭐⭐⭐⭐⭐",
+
+          desc:
+            "Premium hotel with rooftop dining."
+        }
+
+      ]
+
+    };
+
+    // Get city from URL
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const city =
+      params.get("city");
+
+    // Normalize city
+    let normalizedCity = "";
+
+    if(city) {
+
+      normalizedCity =
+        city.trim().toLowerCase();
+
     }
-  ],
 
-  mumbai: [
-    {
-      name: "Sea View Palace",
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-      rating: "⭐⭐⭐⭐⭐",
-      desc: "Beautiful sea facing luxury hotel."
-    },
+    // Get elements
+    const cityTitle =
+      document.getElementById("cityTitle");
 
-    {
-      name: "City Crown Hotel",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      rating: "⭐⭐⭐⭐",
-      desc: "Affordable hotel in Mumbai city center."
+    const hotelList =
+      document.getElementById("hotelList");
+
+    // Display heading
+    cityTitle.innerHTML =
+      `Hotels in ${city}`;
+
+    // Display hotels
+    if(hotelsData[normalizedCity]) {
+
+      hotelsData[normalizedCity].forEach(hotel => {
+
+        hotelList.innerHTML += `
+
+          <div class="hotel-card">
+
+            <img src="${hotel.image}" alt="Hotel">
+
+            <h3>${hotel.name}</h3>
+
+            <p>${hotel.rating}</p>
+
+            <p>${hotel.desc}</p>
+
+            <button onclick="bookHotel()">
+              Book Now
+            </button>
+
+          </div>
+
+        `;
+
+      });
+
     }
-  ],
 
-  delhi: [
-    {
-      name: "Royal Orchid",
-      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
-      rating: "⭐⭐⭐⭐⭐",
-      desc: "Premium stay with rooftop dining."
+    else {
+
+      hotelList.innerHTML = `
+
+        <h2>
+          No hotels available in this city currently.
+        </h2>
+
+      `;
+
     }
-  ]
 
-};
+    // Booking popup
+    function bookHotel() {
 
-const params = new URLSearchParams(window.location.search);
-const city = params.get("city").toLowerCase();
+      alert("Ordered Successfully!");
 
-const cityTitle = document.getElementById("cityTitle");
-const hotelList = document.getElementById("hotelList");
+    }
 
-cityTitle.innerHTML = `Hotels in ${city}`;
-
-if(hotelsData[city]) {
-
-  hotelsData[city].forEach(hotel => {
-
-    hotelList.innerHTML += `
-      <div class="hotel-card">
-        <img src="${hotel.image}" alt="Hotel">
-        <h3>${hotel.name}</h3>
-        <p>${hotel.rating}</p>
-        <p>${hotel.desc}</p>
-        <button onclick="bookHotel()">Book Now</button>
-      </div>
-    `;
-
-  });
-
-} else {
-
-  hotelList.innerHTML = `
-    <h2>No hotels available in this city currently.</h2>
-  `;
-}
-
-function bookHotel() {
-  alert("Ordered Successfully!");
-}
-
-</script>
+  </script>
 
 </body>
 </html>
