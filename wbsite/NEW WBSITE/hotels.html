@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+      desc: "Comfortable stay near Marina Beach."
+    }
+  ],
+
+  mumbai: [
+    {
+      name: "Sea View Palace",
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+      rating: "⭐⭐⭐⭐⭐",
+      desc: "Beautiful sea facing luxury hotel."
+    },
+
+    {
+      name: "City Crown Hotel",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+      rating: "⭐⭐⭐⭐",
+      desc: "Affordable hotel in Mumbai city center."
+    }
+  ],
+
+  delhi: [
+    {
+      name: "Royal Orchid",
+      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+      rating: "⭐⭐⭐⭐⭐",
+      desc: "Premium stay with rooftop dining."
+    }
+  ]
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const city = params.get("city").toLowerCase();
+
+const cityTitle = document.getElementById("cityTitle");
+const hotelList = document.getElementById("hotelList");
+
+cityTitle.innerHTML = `Hotels in ${city}`;
+
+if(hotelsData[city]) {
+
+  hotelsData[city].forEach(hotel => {
+
+    hotelList.innerHTML += `
+      <div class="hotel-card">
+        <img src="${hotel.image}" alt="Hotel">
+        <h3>${hotel.name}</h3>
+        <p>${hotel.rating}</p>
+        <p>${hotel.desc}</p>
+        <button onclick="bookHotel()">Book Now</button>
+      </div>
+    `;
+
+  });
+
+} else {
+
+  hotelList.innerHTML = `
+    <h2>No hotels available in this city currently.</h2>
+  `;
+}
+
+function bookHotel() {
+  alert("Ordered Successfully!");
+}
+
+</script>
+
+</body>
+</html>
