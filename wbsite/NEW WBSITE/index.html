@@ -55,4 +55,73 @@
         <h3>Hotel Booking</h3>
         <p>Book hotels easily with secure online payment options.</p>
       </div>
+
+  </section>
+    </div>
+  </section>
+
+  <!-- Explore Hotels -->
+  <section class="explore" id="explore">
+    <h2>Popular Hotels</h2>
+
+    <div class="hotel-container">
+
+      <div class="hotel-card">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Hotel">
+        <h3>Grand Palace Hotel</h3>
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>Luxury stay with sea view rooms.</p>
+      </div>
+
+      <div class="hotel-card">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" alt="Hotel">
+        <h3>Sunset Resort</h3>
+        <p>⭐⭐⭐⭐</p>
+        <p>Relaxing resort with swimming pool and spa.</p>
+      </div>
+
+      <div class="hotel-card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="Hotel">
+        <h3>City Inn</h3>
+        <p>⭐⭐⭐⭐</p>
+        <p>Affordable hotel in the city center.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews">
+    <h2>What Customers Say</h2>
+
+    <div class="review-box">
+      <p>"Amazing booking experience and great hotel options!"</p>
+      <h4>- Sarah M.</h4>
+    </div>
+
+    <div class="review-box">
+      <p>"Very easy to use and trusted reviews helped me choose."</p>
+      <h4>- John D.</h4>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 StayEase Hotel Booking. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function searchHotels() {
+      const city = document.getElementById("cityInput").value;
+
+      if(city.trim() === "") {
+        alert("Please enter a city name");
+        return;
+      }
+
+      window.location.href = `hotels.html?city=${city}`;
+    }
+  </script>
+
+</body>
 </html>
