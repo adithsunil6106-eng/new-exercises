@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,7 @@
   <title>StayEase Hotel Booking</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
 
   <!-- Header -->
@@ -24,85 +27,123 @@
 
   <!-- Hero Section -->
   <section class="hero" id="home">
+
     <div class="hero-content">
       <h1>Find Your Perfect Stay</h1>
-      <p>Book luxury hotels, budget rooms, and family stays with trusted reviews.</p>
 
+      <p>
+        Book luxury hotels, budget rooms, and family stays with trusted reviews.
+      </p>
+
+      <!-- Search Box -->
       <div class="search-box">
-        <input type="text" id="cityInput" placeholder="Enter city name">
-        <button onclick="searchHotels()">Search</button>
+
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Enter city name"
+        >
+
+        <button onclick="searchHotels()">
+          Search
+        </button>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- About Us -->
+  <!-- About -->
   <section class="about" id="about">
+
     <h2>About Us</h2>
+
     <p>
-      StayEase is a modern hotel booking platform that helps travelers discover,
-      compare, and book hotels worldwide. We provide verified reviews,
-      affordable pricing, and premium customer support.
+      StayEase helps travelers discover and book hotels worldwide with
+      trusted reviews and affordable pricing.
     </p>
+
   </section>
 
   <!-- Services -->
   <section class="services" id="services">
+
     <h2>Services Offered</h2>
 
     <div class="service-container">
 
       <div class="card">
         <h3>Hotel Booking</h3>
-        <p>Book hotels easily with secure online payment options.</p>
+        <p>Easy and secure online hotel booking.</p>
       </div>
 
-  </section>
+      <div class="card">
+        <h3>User Reviews</h3>
+        <p>Read verified traveler reviews.</p>
+      </div>
+
+      <div class="card">
+        <h3>24/7 Support</h3>
+        <p>Customer support available anytime.</p>
+      </div>
+
+      <div class="card">
+        <h3>Exclusive Deals</h3>
+        <p>Get discounts on premium hotels.</p>
+      </div>
+
     </div>
+
   </section>
 
-  <!-- Explore Hotels -->
+  <!-- Popular Hotels -->
   <section class="explore" id="explore">
+
     <h2>Popular Hotels</h2>
 
     <div class="hotel-container">
 
       <div class="hotel-card">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Hotel">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
         <h3>Grand Palace Hotel</h3>
         <p>⭐⭐⭐⭐⭐</p>
-        <p>Luxury stay with sea view rooms.</p>
+        <p>Luxury sea-view rooms.</p>
       </div>
 
       <div class="hotel-card">
-        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" alt="Hotel">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
         <h3>Sunset Resort</h3>
         <p>⭐⭐⭐⭐</p>
-        <p>Relaxing resort with swimming pool and spa.</p>
+        <p>Resort with swimming pool and spa.</p>
       </div>
 
       <div class="hotel-card">
-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="Hotel">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
         <h3>City Inn</h3>
         <p>⭐⭐⭐⭐</p>
-        <p>Affordable hotel in the city center.</p>
+        <p>Affordable city center hotel.</p>
       </div>
 
     </div>
+
   </section>
 
   <!-- Reviews -->
   <section class="reviews">
+
     <h2>What Customers Say</h2>
 
     <div class="review-box">
-      <p>"Amazing booking experience and great hotel options!"</p>
+      <p>"Amazing booking experience and great hotels!"</p>
       <h4>- Sarah M.</h4>
     </div>
 
     <div class="review-box">
-      <p>"Very easy to use and trusted reviews helped me choose."</p>
+      <p>"Very easy to use and trusted reviews."</p>
       <h4>- John D.</h4>
     </div>
+
   </section>
 
   <!-- Footer -->
@@ -110,17 +151,26 @@
     <p>© 2026 StayEase Hotel Booking. All Rights Reserved.</p>
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    function searchHotels() {
-      const city = document.getElementById("cityInput").value;
 
-      if(city.trim() === "") {
+    function searchHotels() {
+
+      const city =
+        document.getElementById("cityInput").value.trim();
+
+      if(city === "") {
+
         alert("Please enter a city name");
         return;
+
       }
 
-      window.location.href = `hotels.html?city=${city}`;
+      window.location.href =
+        `hotels.html?city=${encodeURIComponent(city)}`;
+
     }
+
   </script>
 
 </body>
